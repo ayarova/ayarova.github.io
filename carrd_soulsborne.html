@@ -1,0 +1,114 @@
+<!--
+SOULSBORNE CARRD TEMPLATE
+Paste this block into:
+Embed -> Type: Code -> Style: Inline
+
+EDIT HERE:
+1) Text in <h1>, <p>, button labels and card copy.
+2) Replace each data-image URL / CSS variable URL with your own artwork.
+3) Replace href="#" with your real links.
+
+The JS is in a separate file so the markup stays easy to edit.
+-->
+
+<div class="soulsborne-carrd"
+     id="soulsborne-carrd"
+     style="
+       --sb-hero-image: url('PASTE_HERO_IMAGE_URL');
+     ">
+
+  <div class="sb-shell">
+
+    <header class="sb-top">
+      <p class="sb-top-title">
+        For You
+        <span>from me</span>
+      </p>
+      <p class="sb-credit">by your-name</p>
+    </header>
+
+    <section class="sb-hero" id="home">
+      <div class="sb-hero-inner">
+        <span class="sb-kicker">a small collection</span>
+        <h1>YOUR TITLE HERE</h1>
+        <p>Conservat maurus nunc congue nisi vitae suscipit tellus.</p>
+      </div>
+    </section>
+
+    <nav class="sb-nav" aria-label="Sections">
+      <button class="sb-button is-active" type="button" data-target="about">about</button>
+      <button class="sb-button" type="button" data-target="lore">lore</button>
+      <button class="sb-button" type="button" data-target="links">links</button>
+      <button class="sb-button" type="button" data-target="contact">contact</button>
+    </nav>
+
+    <main>
+      <section class="sb-content" id="about">
+
+        <article class="sb-card sb-feature sb-interactive">
+          <div class="sb-media"
+               style="--sb-image: url('PASTE_LEFT_IMAGE_URL');"
+               role="img"
+               aria-label="Decorative gothic artwork"></div>
+
+          <div class="sb-card-content">
+            <h2>TEXT</h2>
+            <div class="sb-meta">
+              <span>info</span>
+              <span>/ info</span>
+              <span>/ info</span>
+              <span>/ info</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="sb-card sb-list" id="lore">
+          <div class="sb-card-content">
+            <h2>TEXT</h2>
+          </div>
+
+          <div class="sb-entry">
+            <strong>title</strong>
+            <p>Mi in nulla posuere sollicitudin aliquam ultrices sagittis orci a.</p>
+          </div>
+
+          <div class="sb-entry">
+            <strong>title</strong>
+            <p>Mauris a diam maecenas sed.</p>
+          </div>
+
+          <div class="sb-entry">
+            <strong>title</strong>
+            <p>Mauris a diam maecenas sed.</p>
+          </div>
+
+          <div class="sb-entry" id="links">
+            <strong>title</strong>
+            <p>Mauris a diam maecenas sed.</p>
+          </div>
+        </article>
+
+      </section>
+
+      <section class="sb-card sb-bottom" id="contact">
+        <div class="sb-media"
+             style="--sb-image: url('PASTE_BOTTOM_IMAGE_URL');"
+             role="img"
+             aria-label="Decorative gothic artwork"></div>
+
+        <div class="sb-card-content">
+          <div>
+            <h3>BUTTON</h3>
+            <p>
+              <a class="sb-link" href="#" aria-label="Replace this link with your destination">
+                Mi in nulla posuere sollicitudin aliquam ultrices sagittis orci a.
+              </a>
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <span class="sb-sr-only" id="sb-audio-status" aria-live="polite"></span>
+  </div>
+</div>

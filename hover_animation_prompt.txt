@@ -1,0 +1,32 @@
+PROMPT — HOVER ANIMATION / GOTHIC SOULSBORNE UI
+
+Animate a dark gothic website interface inspired by gothic fantasy action RPG menus and
+Victorian cathedral atmosphere. Keep the original composition, proportions, typography,
+grid, text, and colors unchanged.
+
+Hover interaction:
+- the hovered button/card rises by 2–3 px;
+- scale only very slightly, around 1.01x;
+- a thin warm ivory highlight appears along the bottom edge;
+- the border becomes subtly brighter;
+- the card receives a soft localized glow, not a neon glow;
+- image areas slowly push in about 3–4% and become a little clearer;
+- the image must remain dark, monochrome, smoky, desaturated, with warm ivory highlights;
+- add extremely subtle film grain and drifting dust;
+- use slow, elegant easing, 220–320 ms for UI response;
+- the image zoom should be slower than the button movement;
+- no bounce, no cartoon motion, no flashy cyberpunk effects;
+- movement should feel like an old cursed manuscript / cathedral mechanism reacting to touch;
+- when the pointer leaves, return smoothly to the exact resting state.
+
+Aesthetic:
+Bloodborne / Dark Souls / gothic cathedral / occult manuscript / forgotten shrine /
+blackened stone / candlelight reflected on worn metal / aristocratic decay.
+
+Color palette:
+background #281f1f and #1d1d1d;
+primary text #f5e3c2;
+highlight/glow #fcf0d9.
+
+Animation should remain tasteful, restrained and premium, with strong darkness and very
+limited warm highlights.

@@ -1,0 +1,36 @@
+PROMPT — HOVER SOUND EFFECT
+
+Create a very short UI hover sound for a dark gothic fantasy website.
+
+Duration: 0.18–0.28 seconds.
+Mood: occult, ancient, restrained, elegant, ominous.
+Sound design: a tiny muted metal/chime resonance combined with a soft crystalline bell,
+a faint reversed breath/air texture, and a barely audible low-frequency room tone.
+The sound should feel like touching an old engraved mechanism inside a ruined cathedral.
+
+Pitch:
+- dark low fundamental around 300–400 Hz;
+- a subtle higher overtone around 600–900 Hz;
+- very short attack;
+- smooth decay;
+- no melody.
+
+Texture:
+- worn metal;
+- dust/air movement;
+- distant stone resonance;
+- delicate ivory/glass sparkle.
+
+Mix:
+- extremely subtle;
+- no harsh transients;
+- no obvious reverb tail;
+- no cinematic boom;
+- no jump-scare;
+- no fantasy "magic spell" sparkle;
+- should work as a premium micro-interaction at low volume.
+
+Export:
+WAV, mono or stereo, 48 kHz, 24-bit.
+Also provide an MP3 version around 160–192 kbps for web use.
+File should be normalized but leave plenty of headroom so it never feels loud.

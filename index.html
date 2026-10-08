@@ -1,114 +1,755 @@
-<!--
-SOULSBORNE CARRD TEMPLATE
-Paste this block into:
-Embed -> Type: Code -> Style: Inline
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For You — from me</title>
 
-EDIT HERE:
-1) Text in <h1>, <p>, button labels and card copy.
-2) Replace each data-image URL / CSS variable URL with your own artwork.
-3) Replace href="#" with your real links.
+<style>
+:root {
+  --bg: #281f1f;
+  --panel: #1d1d1d;
+  --text: #f5e3c2;
+  --light: #fcf0d9;
+  --muted: rgba(245, 227, 194, 0.68);
+  --line: rgba(245, 227, 194, 0.16);
+  --ease: cubic-bezier(.2,.7,.2,1);
+}
 
-The JS is in a separate file so the markup stays easy to edit.
--->
+* {
+  box-sizing: border-box;
+}
 
-<div class="soulsborne-carrd"
-     id="soulsborne-carrd"
-     style="
-       --sb-hero-image: url('PASTE_HERO_IMAGE_URL');
-     ">
+html {
+  scroll-behavior: smooth;
+}
 
-  <div class="sb-shell">
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(252,240,217,.05), transparent 35%),
+    radial-gradient(circle at 50% 100%, rgba(0,0,0,.45), transparent 60%),
+    var(--bg);
+  color: var(--text);
+  font-family: Georgia, "Times New Roman", serif;
+}
 
-    <header class="sb-top">
-      <p class="sb-top-title">
-        For You
-        <span>from me</span>
-      </p>
-      <p class="sb-credit">by your-name</p>
-    </header>
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100;
+  background:
+    radial-gradient(ellipse at center, transparent 35%, rgba(0,0,0,.55) 100%),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 3px,
+      rgba(255,255,255,.015) 4px,
+      transparent 5px 8px
+    );
+}
 
-    <section class="sb-hero" id="home">
-      <div class="sb-hero-inner">
-        <span class="sb-kicker">a small collection</span>
-        <h1>YOUR TITLE HERE</h1>
-        <p>Conservat maurus nunc congue nisi vitae suscipit tellus.</p>
-      </div>
-    </section>
+a {
+  color: inherit;
+}
 
-    <nav class="sb-nav" aria-label="Sections">
-      <button class="sb-button is-active" type="button" data-target="about">about</button>
-      <button class="sb-button" type="button" data-target="lore">lore</button>
-      <button class="sb-button" type="button" data-target="links">links</button>
-      <button class="sb-button" type="button" data-target="contact">contact</button>
-    </nav>
+.soulsborne {
+  width: min(900px, calc(100% - 30px));
+  margin: 50px auto;
+}
 
-    <main>
-      <section class="sb-content" id="about">
+.shell {
+  overflow: hidden;
+  border: 1px solid rgba(252,240,217,.10);
+  border-radius: 16px;
+  background: var(--panel);
+  box-shadow:
+    0 25px 80px rgba(0,0,0,.55),
+    0 0 0 1px rgba(0,0,0,.7);
+}
 
-        <article class="sb-card sb-feature sb-interactive">
-          <div class="sb-media"
-               style="--sb-image: url('PASTE_LEFT_IMAGE_URL');"
-               role="img"
-               aria-label="Decorative gothic artwork"></div>
+/* TOP */
 
-          <div class="sb-card-content">
-            <h2>TEXT</h2>
-            <div class="sb-meta">
-              <span>info</span>
-              <span>/ info</span>
-              <span>/ info</span>
-              <span>/ info</span>
-            </div>
-          </div>
-        </article>
+.top {
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 28px;
+  background:
+    linear-gradient(90deg, rgba(0,0,0,.58), rgba(0,0,0,.18)),
+    radial-gradient(circle at 25% 50%, rgba(252,240,217,.05), transparent 35%);
+  border-bottom: 1px solid rgba(252,240,217,.07);
+}
 
-        <article class="sb-card sb-list" id="lore">
-          <div class="sb-card-content">
-            <h2>TEXT</h2>
-          </div>
+.logo {
+  margin: 0;
+  font-size: 29px;
+  line-height: .9;
+}
 
-          <div class="sb-entry">
-            <strong>title</strong>
-            <p>Mi in nulla posuere sollicitudin aliquam ultrices sagittis orci a.</p>
-          </div>
+.logo span {
+  display: block;
+  margin-top: 5px;
+  font-size: 19px;
+  font-weight: normal;
+  opacity: .9;
+}
 
-          <div class="sb-entry">
-            <strong>title</strong>
-            <p>Mauris a diam maecenas sed.</p>
-          </div>
+.credit {
+  margin: 0;
+  color: var(--muted);
+  font-size: 11px;
+  letter-spacing: .08em;
+}
 
-          <div class="sb-entry">
-            <strong>title</strong>
-            <p>Mauris a diam maecenas sed.</p>
-          </div>
+/* HERO */
 
-          <div class="sb-entry" id="links">
-            <strong>title</strong>
-            <p>Mauris a diam maecenas sed.</p>
-          </div>
-        </article>
+.hero {
+  position: relative;
+  min-height: 175px;
+  display: flex;
+  align-items: center;
+  padding: 30px;
+  overflow: hidden;
+  background:
+    linear-gradient(90deg, rgba(0,0,0,.83), rgba(0,0,0,.42), rgba(0,0,0,.72)),
+    url("images/hero.jpg") center/cover,
+    linear-gradient(120deg, #171515, #292323, #101010);
+  border-bottom: 1px solid var(--line);
+}
 
-      </section>
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 75% 45%, rgba(252,240,217,.08), transparent 25%),
+    linear-gradient(180deg, transparent, rgba(0,0,0,.30));
+}
 
-      <section class="sb-card sb-bottom" id="contact">
-        <div class="sb-media"
-             style="--sb-image: url('PASTE_BOTTOM_IMAGE_URL');"
-             role="img"
-             aria-label="Decorative gothic artwork"></div>
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
 
-        <div class="sb-card-content">
-          <div>
-            <h3>BUTTON</h3>
-            <p>
-              <a class="sb-link" href="#" aria-label="Replace this link with your destination">
-                Mi in nulla posuere sollicitudin aliquam ultrices sagittis orci a.
-              </a>
-            </p>
-          </div>
-        </div>
-      </section>
-    </main>
+.kicker {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--muted);
+  font-size: 11px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
 
-    <span class="sb-sr-only" id="sb-audio-status" aria-live="polite"></span>
+.hero h1 {
+  margin: 0;
+  font-size: clamp(30px, 6vw, 48px);
+  line-height: .95;
+  letter-spacing: -.04em;
+  text-transform: uppercase;
+}
+
+.hero p {
+  margin: 9px 0 0;
+  max-width: 650px;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+/* NAV */
+
+.nav {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  padding: 14px;
+  background: rgba(0,0,0,.18);
+}
+
+.nav button {
+  position: relative;
+  border: 1px solid rgba(252,240,217,.07);
+  border-radius: 4px;
+  padding: 12px;
+  color: var(--text);
+  background: #1a1a1a;
+  font: inherit;
+  font-size: 15px;
+  cursor: pointer;
+  transition:
+    transform .25s var(--ease),
+    color .25s ease,
+    border-color .25s ease,
+    box-shadow .25s ease;
+}
+
+.nav button::after {
+  content: "";
+  position: absolute;
+  left: 12%;
+  right: 12%;
+  bottom: 4px;
+  height: 1px;
+  opacity: 0;
+  background: linear-gradient(90deg, transparent, var(--light), transparent);
+  transition: opacity .25s ease;
+}
+
+.nav button:hover,
+.nav button.active,
+.nav button:focus-visible {
+  transform: translateY(-2px);
+  color: var(--light);
+  border-color: rgba(252,240,217,.23);
+  box-shadow:
+    0 8px 20px rgba(0,0,0,.30),
+    0 0 18px rgba(252,240,217,.06);
+  outline: none;
+}
+
+.nav button:hover::after,
+.nav button.active::after,
+.nav button:focus-visible::after {
+  opacity: .85;
+}
+
+/* CONTENT */
+
+.content {
+  display: grid;
+  grid-template-columns: 1.03fr .97fr;
+  gap: 8px;
+  padding: 0 10px 10px;
+}
+
+.card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(252,240,217,.06);
+  border-radius: 9px;
+  background: #202020;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.3);
+}
+
+.media {
+  position: relative;
+  min-height: 210px;
+  overflow: hidden;
+  background:
+    url("images/left.jpg") center/cover,
+    linear-gradient(135deg, #2a2727, #111);
+  filter:
+    grayscale(1)
+    brightness(.65)
+    contrast(1.12);
+  transition:
+    filter .7s var(--ease),
+    transform .9s var(--ease);
+}
+
+.media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      circle at 50% 45%,
+      rgba(252,240,217,.12),
+      transparent 48%
+    );
+  opacity: 0;
+  transition: opacity .7s ease;
+  pointer-events: none;
+}
+
+.card:hover .media {
+  filter:
+    grayscale(.05)
+    brightness(1.02)
+    contrast(1.05)
+    saturate(.88);
+  transform: scale(1.035);
+}
+
+.card:hover .media::after {
+  opacity: 1;
+}
+
+.card-content {
+  padding: 17px 16px 15px;
+  position: relative;
+}
+
+.card h2,
+.card h3 {
+  margin: 0;
+  line-height: 1;
+  font-size: 23px;
+  text-transform: uppercase;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 13px;
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* LIST */
+
+.list {
+  min-height: 0;
+}
+
+.list .card-content {
+  padding-bottom: 14px;
+}
+
+.entry {
+  padding: 13px 14px;
+  border-top: 1px solid rgba(252,240,217,.08);
+  transition:
+    background .25s ease,
+    padding-left .25s var(--ease);
+}
+
+.entry:hover {
+  padding-left: 19px;
+  background: rgba(252,240,217,.035);
+}
+
+.entry strong {
+  display: inline-block;
+  margin-right: 6px;
+  color: var(--text);
+  font-size: 11px;
+  font-weight: normal;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.entry p {
+  display: inline;
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* BOTTOM */
+
+.bottom {
+  display: grid;
+  grid-template-columns: 1fr 1.72fr;
+  margin: 0 10px 10px;
+}
+
+.bottom .media {
+  min-height: 110px;
+  background-image: url("images/bottom.jpg");
+  border-radius: 8px 0 0 8px;
+}
+
+.bottom .card-content {
+  display: flex;
+  align-items: center;
+  min-height: 110px;
+  border-left: 1px solid rgba(252,240,217,.08);
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  padding-bottom: 2px;
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(252,240,217,.22);
+  transition:
+    color .25s ease,
+    border-color .25s ease,
+    letter-spacing .25s ease;
+}
+
+.link::after {
+  content: "↗";
+  font-size: .8em;
+}
+
+.link:hover {
+  color: var(--light);
+  border-color: var(--light);
+  letter-spacing: .04em;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 720px) {
+
+  .soulsborne {
+    width: min(100%, calc(100% - 12px));
+    margin: 20px auto;
+  }
+
+  .top {
+    min-height: 66px;
+    padding: 10px 17px;
+  }
+
+  .credit {
+    display: none;
+  }
+
+  .hero {
+    min-height: 155px;
+    padding: 22px 18px;
+  }
+
+  .nav {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .content {
+    grid-template-columns: 1fr;
+  }
+
+  .bottom {
+    grid-template-columns: 1fr;
+  }
+
+  .bottom .media {
+    min-height: 150px;
+    border-radius: 8px 8px 0 0;
+  }
+
+  .bottom .card-content {
+    border-left: none;
+    border-top: 1px solid rgba(252,240,217,.08);
+    border-radius: 0 0 8px 8px;
+  }
+}
+
+@media (max-width: 420px) {
+
+  .hero h1 {
+    font-size: 29px;
+  }
+
+  .nav button {
+    font-size: 13px;
+    padding: 10px 8px;
+  }
+
+  .media {
+    min-height: 175px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="soulsborne">
+<div class="shell">
+
+<header class="top">
+  <p class="logo">
+    For You
+    <span>from me</span>
+  </p>
+
+  <p class="credit">
+    by ayarova
+  </p>
+</header>
+
+
+<section class="hero" id="home">
+  <div class="hero-content">
+
+    <span class="kicker">
+      a small collection
+    </span>
+
+    <h1>
+      YOUR TITLE HERE
+    </h1>
+
+    <p>
+      Conservat maurus nunc congue nisi vitae suscipit tellus.
+    </p>
+
   </div>
+</section>
+
+
+<nav class="nav">
+
+  <button class="active" data-target="about">
+    about
+  </button>
+
+  <button data-target="lore">
+    lore
+  </button>
+
+  <button data-target="links">
+    links
+  </button>
+
+  <button data-target="contact">
+    contact
+  </button>
+
+</nav>
+
+
+<main>
+
+<section class="content" id="about">
+
+  <article class="card">
+
+    <div
+      class="media"
+      role="img"
+      aria-label="Gothic artwork"
+    ></div>
+
+    <div class="card-content">
+
+      <h2>
+        TEXT
+      </h2>
+
+      <div class="meta">
+        <span>info</span>
+        <span>/ info</span>
+        <span>/ info</span>
+        <span>/ info</span>
+      </div>
+
+    </div>
+
+  </article>
+
+
+  <article class="card list" id="lore">
+
+    <div class="card-content">
+      <h2>
+        TEXT
+      </h2>
+    </div>
+
+    <div class="entry">
+      <strong>title</strong>
+      <p>
+        Mi in nulla posuere sollicitudin aliquam ultrices sagittis orci a.
+      </p>
+    </div>
+
+    <div class="entry">
+      <strong>title</strong>
+      <p>
+        Mauris a diam maecenas sed.
+      </p>
+    </div>
+
+    <div class="entry">
+      <strong>title</strong>
+      <p>
+        Mauris a diam maecenas sed.
+      </p>
+    </div>
+
+    <div class="entry" id="links">
+      <strong>title</strong>
+      <p>
+        Mauris a diam maecenas sed.
+      </p>
+    </div>
+
+  </article>
+
+</section>
+
+
+<section class="card bottom" id="contact">
+
+  <div
+    class="media"
+    role="img"
+    aria-label="Dark gothic artwork"
+  ></div>
+
+  <div class="card-content">
+
+    <div>
+
+      <h3>
+        BUTTON
+      </h3>
+
+      <a
+        class="link"
+        href="https://github.com/ayarova"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Mi in nulla posuere sollicitudin aliquam ultrices sagittis orci a.
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+</main>
+
 </div>
+</div>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  const buttons = document.querySelectorAll(".nav button");
+
+  buttons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+      const targetId = button.dataset.target;
+      const target = document.getElementById(targetId);
+
+      buttons.forEach(b => b.classList.remove("active"));
+      button.classList.add("active");
+
+      if (target) {
+        target.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      }
+
+      unlockAudio();
+      playHoverSound();
+    });
+
+    button.addEventListener("mouseenter", () => {
+      playHoverSound();
+    });
+
+    button.addEventListener("focus", () => {
+      playHoverSound();
+    });
+
+  });
+
+
+  let audioContext = null;
+  let audioUnlocked = false;
+
+  function unlockAudio() {
+
+    audioUnlocked = true;
+
+    if (!audioContext) {
+      audioContext = new (
+        window.AudioContext ||
+        window.webkitAudioContext
+      )();
+    }
+
+    if (audioContext.state === "suspended") {
+      audioContext.resume().catch(() => {});
+    }
+  }
+
+
+  document.addEventListener(
+    "pointerdown",
+    unlockAudio,
+    { once: true }
+  );
+
+
+  function playHoverSound() {
+
+    if (!audioUnlocked || !audioContext) return;
+
+    try {
+
+      const now = audioContext.currentTime;
+
+      const oscillator =
+        audioContext.createOscillator();
+
+      const gain =
+        audioContext.createGain();
+
+      oscillator.type = "sine";
+
+      oscillator.frequency.setValueAtTime(
+        620,
+        now
+      );
+
+      oscillator.frequency.exponentialRampToValueAtTime(
+        380,
+        now + 0.18
+      );
+
+      gain.gain.setValueAtTime(
+        0.0001,
+        now
+      );
+
+      gain.gain.exponentialRampToValueAtTime(
+        0.045,
+        now + 0.012
+      );
+
+      gain.gain.exponentialRampToValueAtTime(
+        0.0001,
+        now + 0.20
+      );
+
+      oscillator.connect(gain);
+      gain.connect(audioContext.destination);
+
+      oscillator.start(now);
+      oscillator.stop(now + 0.21);
+
+    } catch (error) {
+      /* Audio is optional. */
+    }
+
+  }
+
+});
+</script>
+
+</body>
+</html>
